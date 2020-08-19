@@ -9,13 +9,13 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr:'10')) 
         disableConcurrentBuilds()
     }
-    stages {
-        stage('Cloning') {
-            steps {
-                echo 'Cloning..'
-                sh 'git clone ${gitrepo}'
-            }
-        }
+    // stages {
+    //     stage('Cloning') {
+    //         steps {
+    //             echo 'Cloning..'
+    //             sh 'git clone ${gitrepo}'
+    //         }
+    //     }
         stage('Checkout') {
             steps {
                 checkout scm
