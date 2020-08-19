@@ -5,8 +5,7 @@ FROM wordpress:php7.1-apache
 #WORKDIR /var/www
 
 # Copy the file from your host to your current location.
-COPY config/php.ini /usr/local/etc/php/conf.d/
-COPY neve var/www/html/wp-content/themes/neve/
+COPY neve.zip var/www/html/wp-content/themes/neve/
 
 # Run the command inside your image filesystem.
 #RUN npm install
