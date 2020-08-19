@@ -1,0 +1,44 @@
+def gitrepo = "https://github.com/weyderfs/cicd-jenkins.git"
+
+
+pipeline {
+    agent any
+
+    options {
+        preserveStashes(buildCount: 10) 
+        buildDiscarder(logRotator(numToKeepStr:'10')) 
+        disableConcurrentBuilds()
+    }
+    stages {
+        stage('Cloning') {
+            steps {
+                echo 'Cloning..'
+                sh 'git clone ${gitrepo}'
+            }
+        }
+        stage('Building') {
+            steps {
+                echo 'Docker Building..'
+                sh 'docker build -t 'wordpressimage' .
+            }
+        }
+                }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying Application..'
+                sh 'docker compose up -d'
+            }
+        }
+        // stage('Test') {
+        //     steps {
+        //         echo 'Testing..'
+        //         sh 'ls -la'
+        //     }
+        // }
+        // stage('Installing Dependencies') {
+        //     steps {
+        //         echo 'PHP & Apache....'
+        //     }
+        // }
+    }
+}
