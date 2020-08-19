@@ -16,11 +16,11 @@ pipeline {
     //             sh 'git clone ${gitrepo}'
     //         }
     //     }
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }        
+        // stage('Checkout') {
+        //     steps {
+        //         checkout scm
+        //     }
+        // }        
         stage('Building') {
             steps {
                 echo 'Docker Building..'
